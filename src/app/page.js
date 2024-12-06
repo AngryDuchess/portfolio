@@ -1,14 +1,14 @@
-import Works from "../components/Works.jsx";
-import About from "../components/About.jsx";
-import HeroSection from "../components/Hero.jsx";
-import TechStack from "../components/TechStack.jsx";
+import AllProjects from "../components/section-all-projects.jsx";
+import About from "../components/section-about-me.jsx";
+import HeroSection from "../components/section-hero.jsx";
+import TechStack from "../components/section-tech-stack.jsx";
 
 export default function Home() {
   return (
     <>
       <HeroSection />
       <TechStack />
-      <Works />
+      <AllProjects />
       <About />
     </>
   );
