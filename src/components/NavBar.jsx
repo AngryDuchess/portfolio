@@ -1,16 +1,16 @@
 "use client";
 import { useEffect, useState, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
-import Modal from "./CalendarModal";
+import CalendarModal from "./modal-google-calendar";
 import { CallCalling, Messages2 } from "iconsax-react";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function NavBar() {
+export default function Navbar() {
   const router = useRouter();
   const [isHovered, setIsHovered] = useState(false);
   const [isPopupOpen, setPopupOpen] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isCalendarModalOpen, setIsCalendarModalOpen] = useState(false);
   const [activeHash, setActiveHash] = useState("");
   const popupRef = useRef(null);
   const buttonRef = useRef(null);
@@ -19,14 +19,14 @@ export default function NavBar() {
     setPopupOpen((prev) => !prev);
   }, []);
 
-  const handleOpenModal = useCallback(() => {
-    setIsModalOpen(true);
-    // document.body.classList.add("body-no-scroll");
+  const handleOpenCalendarModal = useCallback(() => {
+    setIsCalendarModalOpen(true);
+    document.body.classList.add("body-no-scroll");
   }, []);
 
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-    // document.body.classList.remove("body-no-scroll");
+  const handleCloseCalendarModal = () => {
+    setIsCalendarModalOpen(false);
+    document.body.classList.remove("body-no-scroll");
   };
 
   useEffect(() => {
@@ -72,17 +72,6 @@ export default function NavBar() {
     }
   }, [router.asPath]);
 
-  // const isActiveTab = (path) => {
-  //   if (path.startsWith("#")) {
-  //     return window.location.hash === path
-  //       ? "tab-item-shadow font-medium text-portfolioWhite bg-gray-400 rounded-full"
-  //       : "";
-  //   } else
-  //     return location.pathname === path
-  //       ? " font-semibold text-portfolioWhite"
-  //       : "";
-  // };
-
   const isActiveTab = (path) => {
     if (path.startsWith("#")) {
       return activeHash === path ? "bg-gray-400 rounded-full" : "";
@@ -102,7 +91,7 @@ export default function NavBar() {
               <li
                 className={`${isActiveTab(
                   "#hero"
-                )} py-1 px-3 hover:bg-gray-400 hover:rounded-full`}
+                )} py-1 px-3 hover:bg-gray-400 hover:rounded-full dark:hover:bg-portfolioDarkHover`}
               >
                 <a
                   href={
@@ -119,7 +108,7 @@ export default function NavBar() {
               <li
                 className={`${isActiveTab(
                   "#work"
-                )} py-1 px-3 hover:bg-gray-400 hover:rounded-full`}
+                )} py-1 px-3 hover:bg-gray-400 hover:rounded-full dark:hover:bg-portfolioDarkHover`}
               >
                 <a className="" href="#work">
                   Work
@@ -128,7 +117,7 @@ export default function NavBar() {
               <li
                 className={`${isActiveTab(
                   "#about"
-                )} py-1 px-3 hover:bg-gray-400 hover:rounded-full`}
+                )} py-1 px-3 hover:bg-gray-400 hover:rounded-full dark:hover:bg-portfolioDarkHover`}
               >
                 <a className="" href="#about">
                   About
@@ -164,7 +153,7 @@ export default function NavBar() {
                   <ul className="text-sm text-left">
                     <li
                       className="p-2 hover:bg-blue-100 dark:hover:bg-portfolioDarkHover hover:mx-1 hover:rounded-md cursor-pointer flex gap-2"
-                      onClick={handleOpenModal}
+                      onClick={handleOpenCalendarModal}
                     >
                       <CallCalling
                         size="16"
@@ -248,8 +237,11 @@ export default function NavBar() {
           </div>
         </nav>
       </header>
-      {isModalOpen && (
-        <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
+      {isCalendarModalOpen && (
+        <CalendarModal
+          isOpen={isCalendarModalOpen}
+          onClose={handleCloseCalendarModal}
+        >
           <iframe
             src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3YpGo952D33Z2kyqkNX5WF5hiJRRsUE5f5W_SrXFzSulxri4Ea4KXa9kh7YziL5yXZv3ig6ZZc?gv=true"
             style={{ border: 0 }}
@@ -257,7 +249,7 @@ export default function NavBar() {
             height="600"
             frameBorder="0"
           />
-        </Modal>
+        </CalendarModal>
       )}
     </>
   );
