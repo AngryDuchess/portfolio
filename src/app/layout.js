@@ -1,6 +1,6 @@
 import localFont from "next/font/local";
 import "./globals.css";
-import NavBar from '../components/NavBar.jsx'
+import Navbar from '../components/navbar.jsx'
 import { CaseStudyProvider } from "@/context/case-study-context";
 
 const gtwalsheim = localFont({
@@ -40,8 +40,9 @@ export default function RootLayout({ children }) {
         className={`${gtwalsheim.variable}`}
       >
         <div className="background-blur blur-3xl opacity-80"></div>
-        <NavBar />
-        <CaseStudyProvider>{children}</CaseStudyProvider>
+        <Navbar />
+        {children}
+        {/* <CaseStudyProvider>{children}</CaseStudyProvider> */}
       </body>
     </html>
   );
