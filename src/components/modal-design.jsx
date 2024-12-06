@@ -70,8 +70,7 @@ export default function DesProjectModal({
                 {case_study && Object.keys(case_study).length > 0 ? (
                   <Link
                     href={`/case-study/${case_study.id}`}
-                    className="inline-first-btn bg-portfolioTextDark text-shadow border-b-2 border-black hover:border-none button-secondary-shadow text-[#EBEBEB] px-3 py-1 rounded-full text-sm italic min-h-10"
-                    a
+                    className="inline-first-btn  leading-7 bg-portfolioTextDark text-shadow border-b-2 border-black hover:border-none button-secondary-shadow text-[#EBEBEB] px-3 py-1 rounded-full text-sm italic min-h-10"
                   >
                     Case Study
                   </Link>
