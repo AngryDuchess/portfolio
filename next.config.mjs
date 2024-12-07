@@ -14,7 +14,7 @@ const nextConfig = {
         },
         {
           protocol:"https",
-          hostname:'hamida-mahama.onrender.com',
+          hostname:'portfolio-cms-jm8s.onrender.com',
           pathname:'**'
         },
         {

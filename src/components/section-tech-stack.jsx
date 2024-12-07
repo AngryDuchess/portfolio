@@ -8,12 +8,12 @@ export default function TechStack() {
   useEffect(() => {
     const getStack = async () => {
       const getStackData = await fetchProjects("/api/tech-stack?populate=*");
-      const stack = getStackData.logos.data;
-      setLogo(stack);
+      setLogo(getStackData.logos.data);
     };
 
     getStack();
   }, []);
+
   return (
     <section
       id="hero"
@@ -32,9 +32,9 @@ export default function TechStack() {
               className="flex items-center rounded-3xl w-24 h-24 hover:bg-portfolioHover hover:bg-opacity-5 justify-center"
             >
               <Image
-                src={`https://hamida-mahama.onrender.com${logo.formats.thumbnail.url}`}
+                src={`${logo?.url}`}
                 className="w-16 h-16 rounded-xl"
-                alt="logo"
+                alt={`${logo?.alternativeText}`}
                 width={150}
                 height={150}
               />

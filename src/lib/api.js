@@ -3,7 +3,8 @@ import { flattenAttributes } from "./utils/utils";
 
 
 const baseUrls = [
-  "https://hamida-mahama.onrender.com/",
+  // "https://hamida-mahama.onrender.com/",
+  "https://portfolio-cms-jm8s.onrender.com",
   "https://cms-0qf1.onrender.com/",
   // "http://localhost:1337",
 ];
