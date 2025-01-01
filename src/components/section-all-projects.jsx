@@ -38,10 +38,10 @@ export default function AllProjects() {
   return (
     <section
       id="work"
-      className="text-portfolioTextDark dark:text-portfolioDarkTextDark w-screen py-16 xl:py-20 px-4"
+      className="text-portfolioTextLight dark:text-portfolioDarkTextLight w-screen py-16 xl:py-20 lg:px-0 px-4"
     >
       <div className="flex gap-8 flex-col max-w-3xl mx-auto justify-center items-center">
-        <p className="text-3xl xl:text-[40px] font-bold">Work</p>
+        <p className="text-3xl xl:text-[40px] font-bold text-portfolioTextDark dark:text-portfolioDarkTextDark">Work</p>
         <p>A showcase of my proudest creations</p>
         <div className="text-portfolioTextLight  flex w-full max-w-[270px] bg-gray-300 dark:bg-zinc-800 justify-between p-[1px] rounded-full">
           <button

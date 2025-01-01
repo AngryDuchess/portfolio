@@ -17,10 +17,10 @@ export default function TechStack() {
   return (
     <section
       id="hero"
-      className="text-portfolioTextDark dark:text-portfolioDarkTextDark w-screen py-16 xl:py-20 px-4"
+      className="text-portfolioTextLight dark:text-portfolioDarkTextLight w-screen py-16 xl:py-20 lg:px-0 px-4"
     >
       <div className="flex gap-8 flex-col max-w-3xl mx-auto justify-center items-center">
-        <p className="text-3xl xl:text-[40px] font-bold">Tech Stack</p>
+        <p className="text-3xl xl:text-[40px] font-bold text-portfolioTextDark dark:text-portfolioDarkTextDark">Tech Stack</p>
         <p>
           The tools and technologies i build with, streamline my workflow, and
           bring my designs to life

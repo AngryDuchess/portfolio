@@ -4,11 +4,10 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="text-portfolioTextDark dark:text-portfolioDarkTextDark w-screen py-16 xl:py-20 px-4"
+      className="text-portfolioTextDark dark:text-portfolioDarkTextDark w-screen py-16 xl:py-20 lg:px-0 px-4"
     >
       <div className="flex gap-4 flex-col max-w-3xl mx-auto">
         <div className="flex flex-col gap-4">
-          {/* <div className="flex flex-row gap-4 xl:justify-between items-center flex-wrap xl:flex-nowrap"> */}
           <div className="flex flex-row gap-2 xl:gap-0 xl:justify-between items-center flex-wrap xl:flex-nowrap">
             <p className="text-3xl xl:text-[40px] font-bold">
               I Create Seamless

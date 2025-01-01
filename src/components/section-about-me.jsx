@@ -52,10 +52,10 @@ export default function About() {
   return (
     <section
       id="about"
-      className="text-portfolioTextDark dark:text-portfolioDarkTextDark w-screen pt-16 pb-32 xl:py-20 px-4 dark:portfolioDarkTextDark"
+      className="text-portfolioTextLight dark:text-portfolioDarkTextLight w-screen pt-16 pb-32 xl:py-20 lg:px-0 px-4 dark:portfolioDarkTextDark"
     >
       <div className="flex gap-8 flex-col max-w-3xl mx-auto justify-center items-center">
-        <p className="text-3xl xl:text-[40px] font-bold">About Me 😉</p>
+        <p className="text-3xl xl:text-[40px] font-bold text-portfolioTextDark dark:text-portfolioDarkTextDark">About Me 😉</p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
           <div className="border border-gray-400 dark:border-portfolioDarkStroke sticker-shadow rounded-3xl bg-white w-full h-72  overflow-hidden flex justify-center items-center -rotate-3">
             {loading ? (
@@ -94,7 +94,7 @@ export default function About() {
             <p
               className={`${
                 currentStory === 0
-                  ? "inline-paragraph dark:text-portfolioDarkTextDark"
+                  ? "inline-paragraph dark:text-portfolioDarkTextLight"
                   : ""
               }`}
             >
