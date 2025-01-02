@@ -3,42 +3,40 @@ import { flattenAttributes } from "./utils/utils";
 
 
 const baseUrls = [
-  // "https://hamida-mahama.onrender.com/",
-  "https://portfolio-cms-jm8s.onrender.com",
-  "https://cms-0qf1.onrender.com/",
-  // "http://localhost:1337",
-];
+  process.env.NEXT_PUBLIC_BASE_URL_1,
+  process.env.NEXT_PUBLIC_BASE_URL_2
+]
 const fetchProjects = async (path) => {
   for (const baseUrl of baseUrls){
     const url = new URL(path, baseUrl);
     try {
-      console.log(`Attempting to fetch from ${url.href}`);
+      console.log(`Fetching data...`);
       const res = await axios.get(url.href);
       const flattenedData = flattenAttributes(res.data);
-      console.log(`Successfully fetched from ${url.href}`);
+      console.log(`Successfully fetched`);
 
       return flattenedData;
     } catch (err) {
-      console.error(`Failed to fetch ${baseUrl}`, err);
+      console.error(`Failed to fetch`, err);
     }
   }
-  throw new Error("All base URLs failed to fetch data.");
+  throw new Error("All URLs failed to fetch data.");
 };
 
 const fetchCaseStudyDetails = async (id) => {
   for (const baseUrl of baseUrls){
     try {
-      console.log(`Attempting to fetch from ${baseUrl}`);
+      console.log(`Fetching data...`);
       const res = await axios.get(`${baseUrl}api/case-studies/${id}`);
       const flattenedData = flattenAttributes(res.data);
-      console.log(`Successfully fetched from ${baseUrl}`);
+      console.log(`Successfully fetched`);
 
       return flattenedData;
     } catch (err) {
-      console.error(`Failed to fetch ${baseUrl}`, err);
+      console.error(`Failed to fetch`, err);
     }
   }
-  throw new Error("All base URLs failed to fetch data.");
+  throw new Error("All URLs failed to fetch data.");
 };
 
 
