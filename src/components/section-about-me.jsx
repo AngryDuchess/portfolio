@@ -5,6 +5,8 @@ import SkeletalLoader from "./skeletal-loader";
 import { ArrowLeft2, ArrowRight2, Refresh } from "iconsax-react";
 import Image from "next/image";
 
+export const revalidate = 30
+
 export default function About() {
   const [currentStory, setCurrentStory] = useState(0);
   const [fetchedAbout, setFetchedAbout] = useState([]);
@@ -106,7 +108,7 @@ export default function About() {
                   className="flex items-center gap-2 leading-7 bg-portfolioTextDark text-shadow border-b-2 border-black hover:border-none button-secondary-shadow text-[#EBEBEB] px-3 py-1 rounded-full text-sm italic min-h-10"
                   onClick={handleStartOver}
                 >
-                  <Refresh size={14} />
+                  <Refresh size={14} color="#ffffff"/>
                   Start over
                 </button>
               ) : (
