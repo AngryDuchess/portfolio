@@ -138,12 +138,13 @@ video::-webkit-media-controls {
   display: inline-block;
   width: 1rem;
   height: 1rem;
-  background-image: url("https://i.pinimg.com/originals/15/f0/81/15f081ca15aabca52f21604710b9fceb.gif");
+  background-image: url("https://res.cloudinary.com/dn5ks1ljf/image/upload/v1735857072/Portfolio%20assets/giggling-gif-ezgif.com-optiwebp_valpuw.webp");
   background-size: cover;
   margin-left: 0.5rem;
   vertical-align: middle;
   border-radius: 100%;
 }
+
 .inline-para::after {
   content: "";
   display: inline-block;
@@ -237,4 +238,19 @@ video::-webkit-media-controls {
 
 h3 {
   @apply text-3xl;
+}
+
+.text-gradient {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+}
+
+.logos {
+  display: block;
+  max-width: 32px;
+  max-height: 32px;
+  width: auto;
+  height: auto;
 }
