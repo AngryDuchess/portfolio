@@ -4,6 +4,8 @@ import Image from 'next/image.js';
 import { useEffect, useState } from 'react';
 import { fetchCaseStudyDetails } from '@/lib/api.js';
 
+export const revalidate = 30
+
 const Casestudy = ({ params }) => {
   const [data, setData] = useState();
   const [loading, setLoading] = useState(true)
