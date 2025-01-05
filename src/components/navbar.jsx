@@ -82,7 +82,7 @@ export default function Navbar() {
   return (
     <>
       <header className="w-screen backdrop-blur-md xl:sticky z-20 bottom-0 fixed xl:top-0 lg:px-0 px-4 bg-portfolioWhite dark:bg-portfolioDarkBackground/60 backdrop-filter bg-opacity-50 pb-8 xl:pb-0 xl:pt-8">
-        <nav className="bg-gray-900 dark:bg-zinc-900/40 backdrop-filter backdrop-blur-sm nav-shadow bg-opacity-60 border-b border-gray-600 dark:border-[#272727] mx-0 md:mx-auto px-2 py-2 max-w-3xl rounded-full">
+        <nav className="bg-gray-900 dark:bg-zinc-900/40 backdrop-filter backdrop-blur-sm nav-shadow bg-opacity-60 border-b border-gray-600 dark:border-[#272727] mx-0 md:mx-auto px-2 py-2 max-w-4xl rounded-full">
           <div className="flex items-center justify-between">
             <Link href="/">
               <Image src="/icon.svg" alt="logo" width={40} height={40} />
