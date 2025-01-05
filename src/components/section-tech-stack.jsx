@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { fetchProjects } from "../lib/api";
 import Image from "next/image";
 
+export const revalidate = 30
+
 export default function TechStack() {
   const [logos, setLogo] = useState([]);
   useEffect(() => {
@@ -19,7 +21,7 @@ export default function TechStack() {
       id="hero"
       className="text-portfolioTextLight dark:text-portfolioDarkTextLight w-screen py-16 xl:py-20 lg:px-0 px-4"
     >
-      <div className="flex gap-8 flex-col max-w-3xl mx-auto justify-center items-center">
+      <div className="flex gap-8 flex-col max-w-4xl mx-auto justify-center items-center">
         <p className="text-3xl xl:text-[40px] font-bold text-portfolioTextDark dark:text-portfolioDarkTextDark">Tech Stack</p>
         <p>
           The tools and technologies i build with, streamline my workflow, and
