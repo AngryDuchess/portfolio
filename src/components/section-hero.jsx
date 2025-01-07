@@ -37,7 +37,7 @@ export default function HeroSection() {
           </div>
         </div>
         <div className="flex flex-col text-portfolioTextLight dark:text-portfolioDarkTextLight text-left">
-          <p className="">
+          <p>
             My expertise lies in creating polished, scalable experiences that
             deliver real value to users and businesses alike. I&apos;ve
             collaborated with diverse clients, mostly startups, to design and
