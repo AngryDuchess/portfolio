@@ -17,6 +17,7 @@ export default function HeroSection() {
                 width={2000}
                 height={2000}
                 alt=""
+                priority
               />
             </span>
             <p className="  font-bold">Functional Experiences </p>
@@ -32,6 +33,7 @@ export default function HeroSection() {
                 width={2000}
                 height={2000}
                 alt=""
+                priority
               />
             </span>
           </div>
