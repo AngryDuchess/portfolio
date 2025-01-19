@@ -9,8 +9,13 @@ export default function TechStack() {
   const [logos, setLogo] = useState([]);
   useEffect(() => {
     const getStack = async () => {
-      const getStackData = await fetchProjects("/api/tech-stack?populate=*");
-      setLogo(getStackData.logos.data);
+      try{
+
+        const data = await fetchProjects("/api/tech-stack?populate=*");
+        setLogo(data.logos);
+      } catch (error) {
+        console.error("Failed to fetch tech stack")
+      }
     };
 
     getStack();
@@ -30,20 +35,25 @@ export default function TechStack() {
           bring my designs to life
         </p>
         <div className="flex gap-2 flex-wrap w-full items-center lg:items-start justify-center">
-          {logos.map((logo) => (
-            <div
+          {logos && logos.length > 0 ?(
+
+            logos.map((logo) => (
+              <div
               key={logo.id}
               className="flex items-center rounded-3xl w-24 h-24 hover:bg-portfolioHover hover:bg-opacity-5 justify-center"
-            >
+              >
               <Image
                 src={`${logo?.url}`}
                 className="w-16 h-16 rounded-xl"
                 alt={`${logo?.alternativeText}`}
                 width={150}
                 height={150}
-              />
+                />
             </div>
-          ))}
+              ))
+            ):(
+              <p>Loading...</p>
+            )}
         </div>
       </div>
     </section>

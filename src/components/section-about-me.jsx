@@ -5,7 +5,7 @@ import SkeletalLoader from "./skeletal-loader";
 import { ArrowLeft2, ArrowRight2, Refresh } from "iconsax-react";
 import Image from "next/image";
 
-export const revalidate = 30
+export const revalidate = 30;
 
 export default function About() {
   const [currentStory, setCurrentStory] = useState(0);
@@ -49,7 +49,7 @@ export default function About() {
 
   const handleStartOver = () => {
     setCurrentStory(0);
-  };
+  }; 
 
   return (
     <section
@@ -57,7 +57,9 @@ export default function About() {
       className="text-portfolioTextLight dark:text-portfolioDarkTextLight w-screen pt-16 pb-32 xl:py-20 lg:px-0 px-4 dark:portfolioDarkTextDark"
     >
       <div className="flex gap-8 flex-col max-w-3xl mx-auto justify-center items-center">
-        <p className="text-3xl xl:text-[40px] font-bold text-portfolioTextDark dark:text-portfolioDarkTextDark">About Me 😉</p>
+        <p className="text-3xl xl:text-[40px] font-bold text-portfolioTextDark dark:text-portfolioDarkTextDark">
+          About Me 😉
+        </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
           <div className="border border-gray-400 dark:border-portfolioDarkStroke sticker-shadow rounded-3xl bg-white w-full h-72  overflow-hidden flex justify-center items-center -rotate-3">
             {loading ? (
@@ -108,7 +110,7 @@ export default function About() {
                   className="flex items-center gap-2 leading-7 bg-portfolioTextDark text-shadow border-b-2 border-black hover:border-none button-secondary-shadow text-[#EBEBEB] px-3 py-1 rounded-full text-sm italic min-h-10"
                   onClick={handleStartOver}
                 >
-                  <Refresh size={14} color="#ffffff"/>
+                  <Refresh size={14} color="#ffffff" />
                   Start over
                 </button>
               ) : (
