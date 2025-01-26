@@ -1,55 +1,38 @@
 "use client";
-import { useState, useEffect } from "react";
-import { fetchProjects } from "../lib/api";
-import SkeletalLoader from "./skeletal-loader";
-import { ArrowLeft2, ArrowRight2, Refresh } from "iconsax-react";
-import Image from "next/image";
+import { useState, useMemo } from "react";
+import { MediaDisplay, NavigationButtons } from "./core/about-components";
 
 export const revalidate = 30;
 
-export default function About() {
-  const [currentStory, setCurrentStory] = useState(0);
-  const [fetchedAbout, setFetchedAbout] = useState([]);
-  const [isImage, setIsImage] = useState(true);
+export default function About({ AboutSection }) {
+  const [currentStoryIndex, setCurrentStoryIndex] = useState(0);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    const getAbout = async () => {
-      setLoading(true);
-      const fetchedAboutData = await fetchProjects("/api/about");
-      const stories = fetchedAboutData.story.content;
-      setFetchedAbout(stories);
-      setLoading(false);
-    };
-
-    getAbout();
-  }, []);
-
-  useEffect(() => {
-    if (fetchedAbout.length > 0 && fetchedAbout[currentStory]) {
-      setIsImage(checkIsImage(fetchedAbout[currentStory].image));
-    }
-  }, [fetchedAbout, currentStory]);
-
+  const currentStory = AboutSection?.[currentStoryIndex] || null;
+  const isImage = useMemo(() => {
+    return currentStory?.image?.match(/\.(jpeg|jpg|png|gif)$/i);
+  }, [currentStory]);
   const handleNextStory = () => {
-    setCurrentStory((prevStory) => (prevStory + 1) % fetchedAbout.length);
+    setCurrentStoryIndex((prev) => (prev + 1) % AboutSection.length);
   };
 
   const handlePrevStory = () => {
-    setCurrentStory((prevStory) => (prevStory > 0 ? prevStory - 1 : prevStory));
+    setCurrentStoryIndex((prev) => (prev > 0 ? prev - 1 : prev));
   };
-
-  const checkIsImage = (url) => {
-    return /\.(jpeg|jpg|png|gif)$/i.test(url);
-  };
-
-  if (fetchedAbout.length === 0 || !fetchedAbout[currentStory]) {
-    return <p>no stories</p>;
-  }
 
   const handleStartOver = () => {
-    setCurrentStory(0);
-  }; 
+    setCurrentStoryIndex(0);
+  };
+
+  if (!AboutSection || AboutSection.length === 0) {
+    return (
+      <div className="text-center py-16">
+        <p className="text-portfolioTextDark dark:text-portfolioDarkTextDark">
+          No stories available at the moment. Please check back later!
+        </p>
+      </div>
+    );
+  }
 
   return (
     <section
@@ -61,75 +44,25 @@ export default function About() {
           About Me 😉
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
-          <div className="border border-gray-400 dark:border-portfolioDarkStroke sticker-shadow rounded-3xl bg-white w-full h-72  overflow-hidden flex justify-center items-center -rotate-3">
-            {loading ? (
-              <div className="w-full h-72">
-                <SkeletalLoader />
-              </div>
-            ) : (
-              <>
-                {isImage ? (
-                  <Image
-                    src={fetchedAbout[currentStory].image}
-                    className="object-cover w-full h-full"
-                    alt="About me"
-                    width={2000}
-                    height={2000}
-                  />
-                ) : (
-                  <video
-                    key={fetchedAbout[currentStory].image}
-                    className="object-cover w-full h-auto"
-                    playsInline
-                    autoPlay
-                    muted
-                    loop
-                  >
-                    <source
-                      src={fetchedAbout[currentStory].image}
-                      type="video/mp4"
-                    ></source>
-                  </video>
-                )}
-              </>
-            )}
+          <div className="border border-gray-400 dark:border-portfolioDarkStroke sticker-shadow rounded-3xl bg-white w-full h-72 overflow-hidden flex justify-center items-center -rotate-3">
+            <MediaDisplay
+              src={currentStory.image}
+              isImage={isImage}
+              loading={loading}
+              priority={currentStoryIndex === 0}
+            />
           </div>
-          <div className=" text-left w-full mb-4 leading-8 flex flex-col justify-between ">
-            <p
-              className={`${
-                currentStory === 0
-                  ? "inline-paragraph dark:text-portfolioDarkTextLight"
-                  : ""
-              }`}
-            >
-              {fetchedAbout[currentStory].text}
+          <div className="text-left w-full mb-4 leading-8 flex flex-col justify-between">
+            <p className="inline-paragraph dark:text-portfolioDarkTextLight">
+              {currentStory.text}
             </p>
-            <div className="flex gap-4 flex-row-reverse items-end">
-              {currentStory === fetchedAbout.length - 1 ? (
-                <button
-                  className="flex items-center gap-2 leading-7 bg-portfolioTextDark text-shadow border-b-2 border-black hover:border-none button-secondary-shadow text-[#EBEBEB] px-3 py-1 rounded-full text-sm italic min-h-10"
-                  onClick={handleStartOver}
-                >
-                  <Refresh size={14} color="#ffffff" />
-                  Start over
-                </button>
-              ) : (
-                <button
-                  className="px-2 py-2 bg-portfolioTextDark rounded-full text-shadow border-black hover:border-none button-secondary-shadow  hover:bg-[#313131]"
-                  onClick={handleNextStory}
-                >
-                  <ArrowRight2 size={24} color="#ffffff" />
-                </button>
-              )}
-              {currentStory > 0 && (
-                <button
-                  className="px-2 py-2 bg-portfolioTextLight hover:bg-portfolioTextDark rounded-full"
-                  onClick={handlePrevStory}
-                >
-                  <ArrowLeft2 size={24} color="#ffffff" />
-                </button>
-              )}
-            </div>
+            <NavigationButtons
+              onNext={handleNextStory}
+              onPrev={handlePrevStory}
+              onStartOver={handleStartOver}
+              currentIndex={currentStoryIndex}
+              totalStories={AboutSection.length}
+            />
           </div>
         </div>
       </div>
