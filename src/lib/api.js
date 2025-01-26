@@ -1,43 +1,67 @@
-import axios from "axios";
-import { flattenAttributes } from "./utils/utils";
-
+'use server'
+import qs from "qs";
 
 const baseUrls = [
   process.env.NEXT_PUBLIC_BASE_URL_1,
   process.env.NEXT_PUBLIC_BASE_URL_2
 ]
-const fetchProjects = async (path) => {
-  for (const baseUrl of baseUrls){
-    const url = new URL(path, baseUrl);
+
+const homeQuery = qs.stringify({
+  populate: {
+    techStack: {
+      populate: {
+        stackLogos: {
+          populate: ['stackLogo']
+        }
+      }
+    },
+    allProjects: {
+      populate: {
+        header: '*',
+        design_projects: {
+          populate: ['case_study']
+        },
+        development_projects: '*'
+      }
+    },
+    aboutSection: '*'
+  }
+});
+
+const getHomeData = async (path) => {
+    const url = new URL(path, baseUrls[0]);
+    url.search = homeQuery;
     try {
       console.log(`Fetching data...`);
-      const res = await axios.get(url.href);
-      const flattenedData = flattenAttributes(res.data);
+      const res = await fetch(url.href, {
+        method: 'GET',
+      })
       console.log(`Successfully fetched`);
-
-      return flattenedData;
-    } catch (err) {
-      console.error(`Failed to fetch`, err);
+      if (res?.ok) {
+        return res.json()
+      };
+    } catch (e) {
+      return {
+        error: e?.response?.data
+      }
     }
-  }
-  throw new Error("All URLs failed to fetch data.");
 };
+
 
 const fetchCaseStudyDetails = async (id) => {
-  for (const baseUrl of baseUrls){
     try {
       console.log(`Fetching data...`);
-      const res = await axios.get(`${baseUrl}api/case-studies/${id}`);
-      const flattenedData = flattenAttributes(res.data);
+      const res = await fetch(`${baseUrls[0]}/api/case-studies/${id}`, { method: 'GET' });
       console.log(`Successfully fetched`);
-
-      return flattenedData;
-    } catch (err) {
-      console.error(`Failed to fetch`, err);
-    }
-  }
-  throw new Error("All URLs failed to fetch data.");
+      if (res?.ok) {
+        return res.json()
+      }
+    } catch (e) {
+      console.log(e)
+      return {
+        error: e?.response?.data
+      }    }
 };
 
 
-export { fetchProjects,fetchCaseStudyDetails };
+export { fetchCaseStudyDetails, getHomeData };
