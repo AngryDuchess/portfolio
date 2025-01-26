@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import DevProjectModal from "./modal-development";
 import PropTypes from "prop-types";
 import { useEffect } from "react";
 import Image from "next/image";
+import Modal from "./modal-project";
 
-export default function DevelopmentCard({ project }) {
+export default function DevelopmentCard({ project, index }) {
   const [isModalOpen, setModalOpen] = useState(false);
   const openModal = () => setModalOpen(true);
   const closeModal = () => setModalOpen(false);
@@ -44,7 +44,8 @@ export default function DevelopmentCard({ project }) {
               src={project.thumbnailUrl}
               width={2000}
               height={2000}
-              alt=""
+              alt={title}
+              priority={index < 3}
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center text-white">
@@ -56,7 +57,7 @@ export default function DevelopmentCard({ project }) {
           {project?.title}
         </p>
       </div>
-      <DevProjectModal
+      <Modal
         isOpen={isModalOpen}
         onClose={closeModal}
         projectTitle={project.title}
@@ -71,4 +72,5 @@ export default function DevelopmentCard({ project }) {
 
 DevelopmentCard.propTypes = {
   project: PropTypes.object.isRequired,
+    index: PropTypes.number.isRequired, 
 };
