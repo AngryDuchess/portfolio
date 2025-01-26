@@ -1,51 +1,32 @@
-import React, { useState } from "react";
-import DesProjectModal from "./modal-design";
+import React from "react";
 import PropTypes from "prop-types";
-import { useEffect } from "react";
 import Image from "next/image";
+import { useModal } from "./hooks/useModal";
+import Modal from "./modal-project";
 
-export default function DesignCard({ project }) {
-  const [isModalOpen, setModalOpen] = useState(false);
-  const openModal = () => setModalOpen(true);
-  const closeModal = () => setModalOpen(false);
+export default function DesignCard({ project, index }) {
+  const { title, description, id, tags, thumbnailUrl, thumbnailGifUrl, subTitle, liveProject, case_study } = project;
+  const { isModalOpen, openModal, closeModal } = useModal();
 
-  useEffect(() => {
-    if (isModalOpen) {
-      document.body.classList.add("body-no-scroll");
-    } else {
-      document.body.classList.remove("body-no-scroll");
-    }
-    return () => {
-      document.body.classList.remove("body-no-scroll");
-    };
-  }, [isModalOpen]);
-
-  const {
-    title,
-    description,
-    id,
-    tags,
-    thumbnailUrl,
-    thumbnailGifUrl,
-    case_study,
-    subTitle,
-    liveProject,
-  } = project;
   return (
     <>
       <div className="flex flex-col gap-1 hover:text-portfolioPrimary">
         <div
-          key={id}
-          className="bg-gray-600 max-w-sm w-full h-64 rounded-2xl overflow-hidden "
+          role="button"
+          tabIndex={0}
+          aria-label={`View details for ${title}`}
           onClick={openModal}
+          onKeyDown={(e) => e.key === "Enter" && openModal()}
+          className="bg-gray-600 max-w-sm w-full h-64 rounded-2xl overflow-hidden"
         >
           {thumbnailUrl ? (
             <Image
               className="w-full h-full object-cover transition-transform duration-200 hover:scale-105"
-              src={project.thumbnailUrl}
+              src={thumbnailUrl}
               width={2000}
               height={2000}
-              alt=""
+              alt={title}
+              priority={index < 3}
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center text-white">
@@ -54,24 +35,38 @@ export default function DesignCard({ project }) {
           )}
         </div>
         <p className="text-sm text-nowrap overflow-hidden overflow-ellipsis">
-          {project?.title}
+          {title}
         </p>
       </div>
 
-      <DesProjectModal
+      <Modal
         isOpen={isModalOpen}
         onClose={closeModal}
-        projectTitle={project.title}
-        projectDescription={project.description}
-        projectTags={project.tags?.projectTags}
+        projectTitle={title}
+        projectDescription={description}
+        projectTags={tags?.projectTags}
         liveProject={liveProject}
-        thumbnailGifUrl={project.thumbnailGifUrl}
-        case_study={case_study}
+        thumbnailGifUrl={thumbnailGifUrl}
+        caseStudy={case_study}
       />
     </>
   );
 }
 
 DesignCard.propTypes = {
-  project: PropTypes.object.isRequired,
+  project: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    description: PropTypes.array.isRequired,
+    tags: PropTypes.shape({
+      projectTags: PropTypes.arrayOf(PropTypes.string),
+    }).isRequired,
+    thumbnailUrl: PropTypes.string,
+    thumbnailGifUrl: PropTypes.string,
+    subTitle: PropTypes.string,
+    liveProject: PropTypes.string,
+    case_study: PropTypes.object,
+  }).isRequired,
+  index: PropTypes.number.isRequired, 
+
 };
