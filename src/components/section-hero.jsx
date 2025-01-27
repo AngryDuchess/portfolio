@@ -16,7 +16,7 @@ export default function HeroSection() {
                 src="/stickers/sticker-1.webp"
                 width={2000}
                 height={2000}
-                alt=""
+                alt="apple memoji"
                 priority
               />
             </span>
@@ -32,7 +32,7 @@ export default function HeroSection() {
                 src="/stickers/sticker-2.webp"
                 width={2000}
                 height={2000}
-                alt=""
+                alt="apple memoji"
                 priority
               />
             </span>
