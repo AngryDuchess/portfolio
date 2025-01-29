@@ -11,6 +11,7 @@ export default async function Home() {
 
   const designProjects = pageData?.data.allProjects.design_projects || [];
   const developmentProjects = pageData?.data.allProjects.development_projects || [];
+  console.log(designProjects)
 
   return (
     <>
