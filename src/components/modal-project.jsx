@@ -19,7 +19,7 @@ export default function Modal({
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black backdrop-blur-sm bg-opacity-50 z-50 px-4">
-      <div className="relative bg-portfolioWhite dark:bg-portfolioDarkBackground max-w-7xl h-3/4 lg:h-4/5 w-full rounded-3xl  overflow-hidden">
+      <div className="relative bg-portfolioWhite dark:bg-portfolioDarkBackground max-w-7xl h-3/4 lg:h-auto w-full rounded-3xl  overflow-hidden">
         <CloseCircle
           onClick={onClose}
           className="cursor-pointer absolute top-5 right-5 icon-hover"
