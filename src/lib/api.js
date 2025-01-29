@@ -19,9 +19,13 @@ const homeQuery = qs.stringify({
       populate: {
         header: '*',
         design_projects: {
-          populate: ['case_study']
+          populate: ['case_study'],
+          sort: ['createdAt:desc']
         },
-        development_projects: '*'
+        development_projects: {
+          populate: '*',
+          sort: ['createdAt:desc']
+        },
       }
     },
     aboutSection: '*'
