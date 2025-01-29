@@ -14,7 +14,7 @@ const Video = ({ thumbnailGifUrl, thumbnailUrl, isOpen }) => {
   return (
     <div className="h-full">
       {!isVideoLoaded && (
-        <div className="w-full h-full flex items-center justify-center">
+        <div className="w-full lg:min-h-96 h-full flex items-center justify-center">
           <SkeletonVideo />
         </div>
       )}
@@ -24,7 +24,8 @@ const Video = ({ thumbnailGifUrl, thumbnailUrl, isOpen }) => {
           autoPlay
           muted
           loop
-          className="w-full h-full object-cover lg:rounded-2xl"
+          playsInline
+          className="w-full lg:min-h-96 h-full object-cover lg:rounded-2xl"
           poster={thumbnailUrl} 
           
         />
