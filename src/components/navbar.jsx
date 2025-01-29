@@ -173,7 +173,7 @@ export default function Navbar() {
                         Send email
                       </a>
                     </li>
-                    <hr className="mt-4" />
+                    <hr className="mt-4 border-[0.5px] border-gray-500" />
                     <p className="mt-4 p-2 text-[12px] text-portfolioTextLight">
                       or connect with me:
                     </p>
