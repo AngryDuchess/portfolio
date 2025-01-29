@@ -32,10 +32,10 @@ export default function DevelopmentCard({ project, index }) {
   } = project;
   return (
     <>
-      <div className="flex flex-col gap-1 hover:text-portfolioPrimary">
+      <div className="flex flex-col gap-3 hover:text-portfolioPrimary">
         <div
           key={id}
-          className="bg-gray-600 max-w-sm w-full h-64 rounded-2xl overflow-hidden mb-4"
+          className="bg-gray-600 max-w-sm w-full min-h-[300px] lg:min-h-0 h-64 rounded-2xl overflow-hidden"
           onClick={openModal}
         >
           {thumbnailUrl ? (
