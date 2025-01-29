@@ -34,8 +34,7 @@ const getHomeData = async (path) => {
     try {
       console.log(`Fetching data...`);
       const res = await fetch(url.href, {
-        method: 'GET',
-      })
+        method: 'GET'      })
       console.log(`Successfully fetched`);
       if (res?.ok) {
         return res.json()
@@ -51,7 +50,7 @@ const getHomeData = async (path) => {
 const fetchCaseStudyDetails = async (id) => {
     try {
       console.log(`Fetching data...`);
-      const res = await fetch(`${baseUrls[0]}/api/case-studies/${id}`, { method: 'GET' });
+      const res = await fetch(`${baseUrls[0]}/api/case-studies/${id}`, { method: 'GET', cache: 'no-cache' });
       console.log(`Successfully fetched`);
       if (res?.ok) {
         return res.json()

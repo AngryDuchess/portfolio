@@ -2,6 +2,8 @@ import BlockRendererClient from "../../lib/blockrenderclient.jsx";
 import Image from "next/image";
 import { fetchCaseStudyDetails } from "@/lib/api";
 
+export const revalidate = 30;
+
 const CaseStudy = async ({ searchParams }) => {
   const query = (await searchParams).id
   const color = (await searchParams).color
