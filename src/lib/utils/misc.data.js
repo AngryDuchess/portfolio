@@ -35,5 +35,6 @@ export const logosData = [
         alt: "Fleetops&Vantage logo",
         name: "Fleetops&Vantage",
         classnames: "logos"
-    }
+    },
+    
 ];
