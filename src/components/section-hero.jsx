@@ -47,9 +47,8 @@ export default function HeroSection() {
           </p>{" "}
           <br />
           <p className="mb-4">Proud to have collaborated with these brands:</p>
-          <div className="">
+
             <BrandSection />
-          </div>
         </div>
       </div>
     </section>
