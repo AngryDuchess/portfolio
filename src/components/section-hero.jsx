@@ -10,7 +10,7 @@ export default function HeroSection() {
       <div className="flex gap-4 flex-col max-w-4xl mx-auto">
         <div className="flex flex-col gap-4 text-3xl xl:text-[40px]">
           <div className="flex flex-row gap-2 xl:gap-0 xl:justify-between items-center flex-wrap xl:flex-nowrap">
-            <p className="  font-bold">I Create Pretty &</p>
+            <p className="  font-bold">I Create Pretty</p>
             <span className="bg-gray-300 border  dark:bg-zinc-900 border-gray-400 dark:border-zinc-800 rounded-2xl w-16 h-16 sticker-shadow -rotate-6">
               <Image
                 src="/stickers/sticker-1.webp"
@@ -20,7 +20,7 @@ export default function HeroSection() {
                 priority
               />
             </span>
-            <p className="  font-bold">Functional Experiences </p>
+            <p className="  font-bold">& Functional Experiences </p>
           </div>
           <div className="flex flex-row gap-3 items-center flex-wrap">
             <p className=" font-bold">Through</p>
