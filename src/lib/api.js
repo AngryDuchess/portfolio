@@ -32,6 +32,12 @@ const homeQuery = qs.stringify({
   }
 });
 
+const casestudyQuery = qs.stringify({
+  populate: {
+    about: "*"
+  }
+})
+
 const getHomeData = async (path) => {
     const url = new URL(path, baseUrls[0]);
     url.search = homeQuery;
@@ -52,9 +58,10 @@ const getHomeData = async (path) => {
 
 
 const fetchCaseStudyDetails = async (id) => {
+
     try {
       console.log(`Fetching data...`);
-      const res = await fetch(`${baseUrls[0]}/api/case-studies/${id}`, { method: 'GET', cache: 'no-cache' });
+      const res = await fetch(`${baseUrls[0]}/api/case-studies/${id}?populate=*`, { method: 'GET', cache: 'no-cache' });
       console.log(`Successfully fetched`);
       if (res?.ok) {
         return res.json()
