@@ -53,7 +53,7 @@ export default function About({ AboutSection }) {
             />
           </div>
           <div className="text-left w-full mb-4 leading-8 flex flex-col justify-between">
-            <p className="inline-paragraph dark:text-portfolioDarkTextLight">
+            <p className=" dark:text-portfolioDarkTextLight">
               {currentStory.text}
             </p>
             <NavigationButtons
