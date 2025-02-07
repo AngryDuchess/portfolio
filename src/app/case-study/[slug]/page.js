@@ -12,7 +12,7 @@ const CaseStudy = async ({ searchParams }) => {
   return (
     <section
       style={{ backgroundColor: color }}
-      className="min-h-screen w-full px-4 lg:px-0 text-portfolioTextDark dark:text-portfolioDarkTextDark"
+      className="min-h-screen w-full px-4 lg:px-0 text-portfolioDarkTextDark  pt-20 relative"
     >
       <div className="flex gap-8 flex-col max-w-4xl mx-auto py-8 justify-center items-start lg:items-center">
         <h1 className="text-4xl lg:text-6xl font-medium">{caseStudy.caseStudyTitle}</h1>
@@ -47,13 +47,13 @@ const CaseStudy = async ({ searchParams }) => {
       </section>
 
       {/* Case Study Body Section */}
-      <section className="pb-16 flex flex-col items-center leading-8">
+      <section className="pb-16 flex flex-col items-center leading-8 text-portfolioDarkTextLight">
         <div className="max-w-3xl">
 
           <BlockRendererClient content={caseStudy?.caseStudyBody} />
         </div>
        </section>
-       <div className="flex gap-8 flex-col max-w-4xl mx-auto pt-8 pb-20 justify-center items-start lg:items-center">
+       <div className="flex gap-8 flex-col max-w-4xl mx-auto pt-8 pb-28 justify-center items-start lg:items-center">
         <h1 className="text-4xl lg:text-6xl font-medium">Final Mockups</h1>
         <div className="flex flex-wrap gap-8 justify-center">
           {caseStudy?.mockups?.map((mockup, index) => (
@@ -67,7 +67,7 @@ const CaseStudy = async ({ searchParams }) => {
             />
           ))}
         </div>
-        <p>Thanks for reading! 😘</p>
+        <p className="">Thanks for reading! 😘</p>
       </div>
     </section>
   );
