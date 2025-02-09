@@ -93,7 +93,7 @@ export default function Navbar() {
                   "#hero"
                 )} py-1 px-3 hover:bg-gray-400 hover:rounded-full dark:hover:bg-portfolioDarkHover`}
               >
-                <a
+                {/* <a
                   href={
                     typeof window !== "undefined" &&
                     window.location.pathname === "/"
@@ -101,16 +101,18 @@ export default function Navbar() {
                       : "/"
                   }
                   className=""
-                >
+                > */}
+                <Link href="/#hero">
                   Home
-                </a>
+                </Link>
+                {/* </a> */}
               </li>
               <li
                 className={`${isActiveTab(
                   "#work"
                 )} py-1 px-3 hover:bg-gray-400 hover:rounded-full dark:hover:bg-portfolioDarkHover`}
               >
-                <a className="" href="#work">
+                <a className="" href="/#work">
                   Work
                 </a>
               </li>
@@ -119,7 +121,7 @@ export default function Navbar() {
                   "#about"
                 )} py-1 px-3 hover:bg-gray-400 hover:rounded-full dark:hover:bg-portfolioDarkHover`}
               >
-                <a className="" href="#about">
+                <a className="" href="/#about">
                   About
                 </a>
               </li>
@@ -215,7 +217,7 @@ export default function Navbar() {
                       <a
                         target="_blank"
                         rel="noopener noreferrer"
-                        href="https://twitter.com/angry_duchess"
+                        href="https://x.com/hamida_mahama"
                       >
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
