@@ -45,6 +45,8 @@ export default function Modal({
                   <Link
                     href={`/case-study/${caseStudy.slug}?id=${caseStudy.documentId}&color=${caseStudy.bgColor}`}
                     className="inline-first-btn leading-7 bg-portfolioTextDark text-shadow border-b-2 border-black hover:border-none button-secondary-shadow text-[#EBEBEB] px-3 py-1 rounded-full text-sm italic min-h-10"
+                  target="_blank"
+                    rel="noopener noreferrer"
                   >
                     Case Study
                   </Link>
