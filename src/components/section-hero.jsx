@@ -5,7 +5,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="text-portfolioTextDark dark:text-portfolioDarkTextDark w-screen py-16 xl:py-20 lg:px-0 px-4"
+      className="text-portfolioTextDark dark:text-portfolioDarkTextDark w-screen py-16 xl:pt-32 lg:px-0 px-4"
     >
       <div className="flex gap-4 flex-col max-w-4xl mx-auto">
         <div className="flex flex-col gap-4 text-3xl xl:text-[40px]">
