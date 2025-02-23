@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import CalendarModal from "./modal-google-calendar";
 import { CallCalling, Messages2 } from "iconsax-react";
 import Image from "next/image";
@@ -8,12 +9,14 @@ import Link from "next/link";
 
 export default function Navbar() {
   const router = useRouter();
+  const pathname = usePathname();
   const [isHovered, setIsHovered] = useState(false);
   const [isPopupOpen, setPopupOpen] = useState(false);
   const [isCalendarModalOpen, setIsCalendarModalOpen] = useState(false);
   const [activeHash, setActiveHash] = useState("");
   const popupRef = useRef(null);
   const buttonRef = useRef(null);
+
 
   const handleButtonClick = useCallback(() => {
     setPopupOpen((prev) => !prev);
@@ -79,9 +82,13 @@ export default function Navbar() {
     return router.pathname === path ? "bg-gray-400 rounded-full" : "";
   };
 
+  if (pathname.startsWith("/case-study")) {
+    return null;
+  }
+
   return (
     <>
-      <header className="w-screen backdrop-blur-md xl:sticky z-20 bottom-0 fixed xl:top-0 lg:px-0 px-4 bg-portfolioWhite dark:bg-portfolioDarkBackground/60 backdrop-filter bg-opacity-50 pb-8 xl:pb-0 xl:pt-8">
+      <header className="w-full backdrop-blur-md xl:fixed z-20 bottom-0 xl:bottom-auto fixed xl:top-0 lg:px-0 px-4 bg-portfolioWhite dark:bg-portfolioDarkBackground/60 backdrop-filter bg-opacity-50 pb-8 xl:pb-0 xl:pt-8">
         <nav className="bg-gray-900 dark:bg-zinc-900/40 backdrop-filter backdrop-blur-sm nav-shadow bg-opacity-60 border-b border-gray-600 dark:border-[#272727] mx-0 md:mx-auto px-2 py-2 max-w-4xl rounded-full">
           <div className="flex items-center justify-between">
             <Link href="/">
@@ -93,19 +100,9 @@ export default function Navbar() {
                   "#hero"
                 )} py-1 px-3 hover:bg-gray-400 hover:rounded-full dark:hover:bg-portfolioDarkHover`}
               >
-                {/* <a
-                  href={
-                    typeof window !== "undefined" &&
-                    window.location.pathname === "/"
-                      ? "#hero"
-                      : "/"
-                  }
-                  className=""
-                > */}
                 <Link href="/#hero">
                   Home
                 </Link>
-                {/* </a> */}
               </li>
               <li
                 className={`${isActiveTab(
