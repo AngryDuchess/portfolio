@@ -1,5 +1,3 @@
-import BlockRendererClient from "../../lib/blockrenderclient.jsx";
-import Image from "next/image";
 import Link from "next/link";
 import { fetchCaseStudyDetails } from "@/lib/api";
 import { ArrowLeft } from "iconsax-react";
