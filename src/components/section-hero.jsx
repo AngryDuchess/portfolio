@@ -8,6 +8,9 @@ export default function HeroSection() {
       className="text-portfolioTextDark dark:text-portfolioDarkTextDark w-screen py-16 xl:pt-32 lg:px-0 px-4"
     >
       <div className="flex gap-4 flex-col max-w-4xl mx-auto">
+        <h1 className="sr-only">
+          Hamida Mahama: Design Engineer &amp; Software Developer
+        </h1>
         <div className="flex flex-col gap-4 text-3xl xl:text-[40px]">
           <div className="flex flex-row gap-2 xl:gap-0 xl:justify-between items-center flex-wrap xl:flex-nowrap">
             <p className="  font-bold">I Create Pretty</p>
